@@ -1,19 +1,76 @@
 ---
 title: "Instructions_Assign1"
 output: pdf_document
+author: Eren Ada
+
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-# Field Sampling Data Analysis and Presentation using R Software
-# BIO 104 Lab A1 Species Diversity Report
+## Field Sampling Data Analysis and Presentation using R SoftwareBIO 104 Lab A1 Species Diversity Report
+
+### Goals for Lab 1:
+
+-  Import data into R
+-  Save data in R as variables
+-  Plot diversity data as a scatterplot and a box-plot
+-  Plot certain parts of your data
+
+<br>
+
+
+#### 1. Getting Started
+
+You will be using R for data analysis this semester. R is a versatile, free data handling
+software widely-used by scientists. R is great for organizing data, analyzing data, and
+presenting data.
+
+##### Here is some basic vocabulary you will need when using R:
+
+- R script: the lines of code that you are writing (filename.R)
+
+- R project: your R script, any variables you have created, and your current R
+environment (filename.Rproj)
+
+- Variable: a way to store your data for use in the R script. For example, if you type x=3
+into R, then R now stores x (the variable) as the number 3.
+• Package: a set of functions/codes that you can load into your script (examples -
+gsheet, ggplot2)
+
+- Function: an action or calculation that you perform on your variables (examples -
+gsheet2tbl, subset, mean, library)
+
+- Comment: does not run as code, starts with #. You use comments to keep track of
+what your code is doing
+More information on R is at http://www.datacarpentry.org/R-ecology-lesson/00-beforewe-start.html#why_learn_r
+
+##### Helpful Hints
+
+- Uppercase/lowercase matters!
+
+- Spaces and empty lines do not matter in your code
+
+- Do not use spaces in your variable names or file names (use _ or - or . )
+
+- Links to GoogleSheets need to be in 'single quotes'
+
+- #Comment your code so you know what's going on
+
+- Store variables using <-
+
+- Access the data points in a variable using variable [ ]
 
 
 
+---
 
-```{r intro}
 
-```
+### TO START:
 
+ Log in to the R Studio server at [https://celsrs.uri.edu/](https://celsrs.uri.edu/)
+
+ - Your username is your URI email address up to the @ sign
+ 
+- Your password is your URI ID 
