@@ -1,0 +1,19 @@
+---
+title: "Instructions_Assign1"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Field Sampling Data Analysis and Presentation using R Software
+# BIO 104 Lab A1 Species Diversity Report
+
+
+
+
+```{r intro}
+
+```
+
