@@ -1,0 +1,197 @@
+---
+title: "Assignment 3 Instructions"
+author: "Linda Forrester, Rachel Schwartz. Markdown: Eren Ada"
+output:
+  html_document:
+    df_print: paged
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+<br>
+<div align="center">
+### <span style="color: royalblue">**BIO104 Lab A3. Photosynthesis and Absorption Spectrum of Algae**</span>
+</div>
+<br>
+
+### <span style="color: royalblue">Goals for Lab 3</span>
+
+Make a graph of absorption of algae samples at different wavelengths. When completed, compare algae species spectrophotometer readings on one graph.
+
+Be able to...
+
+-   Predict expected absorption spectra
+-   Put your data into long form in your own Google Sheet.
+-   Import data and graph your photometric readings as points.
+-   Compare photometric readings from 3 different algae on one graph using color.
+
+<br>
+
+#### <span style="color: royalblue">0. Before starting with R, sketch your expected results</span>
+
+**Draw line graphs to represent expected spectra for spinach and two macro-algae.**
+
+Line graphs are useful to represent absorption over a range. Draw a line graph showing the expected absorption peaks across the 400-700nm spectrum. Below are the expected peaks of photosynthetic pigments we expect in each sample.
+
+<br>
+
+
+Remember, you will graph all the pigments combined as one line per sample.
+
+
+<br>
+
+**Green plants:** chlorophyll a (peaks ~ 430 and ~662 nm), chlorophyll b (~453 and ~642nm)
+
+**Phaeophyceae:** chl a & chl b, and carotenoid pigment: fucoxanthin (442 & 472nm)
+
+**Rhodophyta:** chl a & chl b, and phycobilin(phycocyanin (605nm) and phycoerythrin (525 and 570nm))
+
+**Chlorophyceae:** chl a, chl b, (and carotenoids— 442 and 472 nm, but NOT soluble in ethanol.)
+
+<br>
+
+
+#### <span style="color: royalblue">1. Getting Started</span>
+##### <span style="color: royalblue">1a. Put data in long form on Google Sheets and adjust share it with your team</span>
+
+Enter your group's data into a Google Sheet in long form. Set up column names Algae (algae_names or A,B,C), Wavelength (400 to 700, by tens), and Absorption (what you measured). You should have 1 header row and 93 rows of data total.
+
+
+Change the permission settings to "Anyone with the link can view." Click on the blue Share button in the top right. Click "Get shareable link." Click on the drop-down menu and select "More..." Select "On - Anyone with the link." If you don't change the sharing settings, you will get an error when you try to use the gsheet2tbl() function. This is because RStudio doesn't have the permission to access the Google Sheet data.
+
+
+Copy the link from your Google Sheet to use in RStudio.
+
+
+
+##### <span style="color: royalblue">1b. Load the packages you need</span>
+
+**Make a new project in a new directory and open a new script.**
+
+***Refer to Lab 1, Part 2 if you need help.***
+
+-   Copy the comment lines into your script
+
+-   Enter the code based on the previous labs and your R scripts from Labs A1 and A2.
+
+<br>
+
+```{r}
+# MyFullName, myTAname = learning linegraph & T-test in RStudio
+# Load the packages ggplot2 and gsheet
+```
+<br>
+
+##### <span style="color: royalblue">2. Get your data into R</span>
+
+```{r}
+# Store your Google sheets link as the variable url
+# load your data stored in the variable url using the gsheet2tbl function
+# and store it as the variable algae_data
+```
+
+
+```{r include=FALSE}
+
+# loading the libraries 
+
+library(dplyr)
+library(ggplot2)
+library(gsheet)
+
+# save the URL as variable 
+
+plantURL <- 'https://docs.google.com/spreadsheets/d/1Fg087cN7yJg-ljzu0E6lIBcGeFmRLASsCvHbDuDfuv0/edit#gid=1807106462'
+
+# save the plant data to a variable 
+
+plant_data <- gsheet2tbl(plantURL)
+
+```
+
+
+Remember, once we have our data in, it is always good to check to make sure the data was imported correctly. Use the commands you learned in Lab 2, Part 2.
+
+
+```{r}
+# Check your data to make sure it looks right (first lines only and column names)
+head(plant_data)
+```
+
+
+##### <span style="color: royalblue">3. Graphing your Algae Data<span>
+
+
+Just like last time, you are going to use ggplot to graph your algae data. We want to compare which wavelengths are more absorbed or less absorbed by different species of algae. We are going to graph y data as points.
+Refer to Lab 2, Parts 4b and 4d if you need help.
+
+
+
+##### <span style="color: royalblue">3a. Create the base layer of your plot with correct labels</span>
+
+First identify the variables (by looking at the column names)
+
+-   What is the independent variable (x axis)?
+-   What is the dependent variable (y axis)?
+-   How will you plot different algae types separately (color)?
+-   Remember to label your axes and legend (include units!)
+
+```{r}
+# Create the base layer of the plot using ggplot # Add datapoints and labels to the plot
+
+# Add datapoints and labels to the plot
+```
+
+
+```{r echo=FALSE}
+# Create the base layer of the plot using ggplot # Add datapoints and labels to the plot
+
+ggplot(plant_data, aes(x = Day, y = Height, color = Exposure))
+```
+
+```{r echo=FALSE}
+# Add datapoints and labels to the plot
+ggplot(plant_data, aes(x = Day, y = Height, color = Exposure)) + geom_point() + 
+  scale_x_continuous(name = "Days - Your Name") + 
+  scale_y_continuous(name = "Average Plant Height") + 
+  labs(color = "Treatment Exposure")
+```
+
+
+<br>
+
+
+**Save this plot as Lab3_graph so that you can turn it in with your lab report.**
+
+<br>
+
+#### <span style="color: royalblue">Lab 3 Report Submission</span>
+
+
+Turn in a hard copy of your lab report that includes the following:
+
+1. Hand drawn graph with 3 lines:, one line for spinach and one line each for your two algae absorption spectra.
+
+2. Summary table for your group's data (wide form, made in excel/sheets/or R). 3. Graph of absorbance values over the visible spectrum for all 3 samples
+(one plot, with different colors for spinach and the two different algae).
+
+4. Your code. Code should be organized, include good comments, and include only code that works and does not produce errors.
+
+5. Answers to the following questions (at least one full page, double-spaced):
+
+– What wavelengths are most strongly (and most poorly) absorbed by which of the algae extracts? Directly reference your data and explain why you chose your answer.
+
+– Does your data match the known absorption spectra of different pigments found in chloroplasts (e.g. chlorophyll a, chlorophyll b, anthocyanin and carotenoids)?
+Which pigments have absorption spectra most similar to your results? Refer to your data and give exact values.
+
+– Would you expect the absorption spectra to be the same for all the spinach and all the algae? Why or why not? Consider where these organisms are found in the wild.
+
+– Why is it important to have the ethanol blank in this study? What is the purpose of the blank in spectrophotometry?
+
+
+
+
