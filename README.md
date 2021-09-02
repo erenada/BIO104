@@ -1,2 +1,3 @@
 # BIO104
-Bio104 R Material
+
+This repository contains the R instructions for Bio104.
