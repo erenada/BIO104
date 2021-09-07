@@ -533,7 +533,7 @@ scale_y_continuous(name="Simpson Diversity Index")
 If you want to only show data from the two FOX Island sites, then make a new variable containing just these data by filtering your larger dataset.
 First load the dplyr library, which contains a filtering function.
 
-```{r subset}
+```{r subset, message=FALSE, warning=FALSE}
 
 # Load the dplyr library
 library(dplyr)
@@ -545,7 +545,7 @@ library(dplyr)
 Then filter the data to include SiteTypes FOX_outgoing and FOX_incoming (the vertical bar means "and")
 
 
-```{r subset2}
+```{r subset2, message=FALSE, warning=FALSE}
 # Create a new variable named FOXonly with just the FOX_incoming and FOX_outgoing data
 
 FOXonly <- filter(diversitydata,SiteType=="FOX_incoming" | SiteType=="FOX_outgoing")
@@ -557,7 +557,7 @@ Now plot this new dataset using boxplots.
 
 <br>
 
-```{r plotsubset}
+```{r plotsubset, message=FALSE, warning=FALSE}
 ggplot(FOXonly, aes(x=SiteType, y=Diversity)) +
 geom_boxplot()+
 scale_x_discrete(name ="Tidal condition –MyName")+
@@ -611,7 +611,7 @@ https://docs.google.com/spreadsheets/d/1RdEzJqLi1vRcpR80nH__0n7nJJ8gPZxoxxuHQqvt
 
 3. Start with the commands:
 
-```{r subsetexample}
+```{r subsetexample, message=FALSE, warning=FALSE}
 url2 <- 'https://docs.google.com/spreadsheets/d/1RdEzJqLi1vRcpR80nH__0n7nJJ8gPZxoxxuHQqvtbWs/edit#gid=0/'
 
 FOXyearlydiversitydata <- gsheet2tbl(url2)
